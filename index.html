@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Saúde e Bem-Estar</title>
+    <style>
+        :root {
+            color-scheme: light dark;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-header, #007bff);
+            color: white;
+            position: relative;
+        }
+        header img {
+            height: 40px;
+            margin-left: 10px;
+        }
+        nav {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        nav a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background: #ddd;
+        }
+        .menu-icon {
+            margin-right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+        }
+        .box {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input, button {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #007bff;
+            width: 0%;
+        }
+        footer {
+            width: 100%;
+            background: rgb(0, 0, 0);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+        .sobre {
+            padding: 15px;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 0;
+        }
+        .social-icons a {
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: flex; 
+            align-items: center; 
+            gap: 5px; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav id="menu">
+            <a href="#">Início</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Frase do Dia -->
+        <div class="box">
+            <h2>Frase do Dia</h2>
+            <p id="frase"></p>
+        </div>
+
+        <!-- Calculadora de IMC -->
+        <div class="box">
+            <h2>Calculadora de IMC</h2>
+            <input type="number" id="peso" placeholder="Peso (kg)">
+            <input type="number" id="altura" step="0.01" placeholder="Altura (m)">
+            <button onclick="calcularIMC()">Calcular</button>
+            <p id="resultadoIMC"></p>
+        </div>
+
+        <!-- Contador de Água -->
+        <div class="box">
+            <h2>Contador de Água</h2>
+            <label>Meta diária (ml):</label>
+            <input type="number" id="meta-agua" value="2000" min="100" onchange="atualizarProgresso()">
+            
+            <p>Consumido: <span id="agua-total">0</span> ml</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <button onclick="adicionarAgua(250)">+ 250ml</button>
+            <button onclick="adicionarAgua(500)">+ 500ml</button>
+
+            <input type="number" id="agua-custom" placeholder="Digite um valor (ml)">
+            <button onclick="adicionarAguaCustom()">Adicionar</button>
+
+            <button onclick="resetarAgua()">Resetar</button>
+        </div>
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="sobre">
+        <h3>Sobre Nós</h3>
+        <p>Somos um portal dedicado ao bem-estar e saúde, ajudando você a viver melhor.</p>
+        </div>
+        <div class="social-icons">
+            <a href="#">
+                <img src="whatsapp.png" alt="Whatsapp" width="20" height="20"> Whatsapp
+            </a>
+            <a href="#">
+                <img src="instagram.png" alt="Instagram" width="20" height="20"> Instagram
+            </a>
+            <a href="#">
+                <img src="youtube.png" alt="YouTube" width="20" height="20"> YouTube
+            </a>
+            
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        // Frases do dia
+        const frases = [
+            "A saúde é o maior presente, cultive-a bem.",
+            "Beba água, seu corpo agradece!",
+            "Mexa-se! O corpo foi feito para se movimentar.",
+            "Uma boa noite de sono é um dos melhores remédios.",
+            "Respire fundo e aproveite o momento."
+        ];
+
+        function exibirFraseAleatoria() {
+            document.getElementById("frase").innerText = frases[Math.floor(Math.random() * frases.length)];
+        }
+
+        // IMC
+        function calcularIMC() {
+            var peso = parseFloat(document.getElementById("peso").value);
+            var altura = parseFloat(document.getElementById("altura").value);
+
+            if (!peso || !altura || altura <= 0) {
+                document.getElementById("resultadoIMC").innerText = "Insira valores válidos.";
+                return;
+            }
+
+            var imc = peso / (altura * altura);
+            var classificacao = imc < 18.5 ? "Abaixo do peso" : imc < 24.9 ? "Peso normal" : imc < 29.9 ? "Sobrepeso" : "Obesidade";
+            document.getElementById("resultadoIMC").innerText = `IMC: ${imc.toFixed(2)} - ${classificacao}`;
+        }
+
+        // Contador de Água
+        let totalAgua = 0;
+        function atualizarProgresso() {
+            let meta = parseInt(document.getElementById("meta-agua").value);
+            let progresso = (totalAgua / meta) * 100;
+            document.getElementById("progress-bar").style.width = `${Math.min(progresso, 100)}%`;
+        }
+        function adicionarAgua(qtd) { totalAgua += qtd; document.getElementById("agua-total").innerText = totalAgua; atualizarProgresso(); }
+        function adicionarAguaCustom() { let qtd = parseInt(document.getElementById("agua-custom").value); if (qtd > 0) adicionarAgua(qtd); }
+        function resetarAgua() { totalAgua = 0; document.getElementById("agua-total").innerText = 0; atualizarProgresso(); }
+
+        window.onload = exibirFraseAleatoria;
+    </script>
+
+</body>
+</html>
