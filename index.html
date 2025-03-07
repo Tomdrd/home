@@ -93,21 +93,24 @@
         .progress-container {
             width: 100%;
             background-color: #ddd;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
             margin-top: 10px;
+            margin-bottom: 10px;
+
         }
         .progress-bar {
-            height: 20px;
+            height: 40px;
             background-color: #007bff;
             width: 0%;
+           
         }
         footer {
             width: 100%;
             background: rgb(0, 0, 0);
             color: white;
             text-align: center;
-            padding: 20px 0;
+            padding: 20px 0 ;
             margin-top: 20px;
         }
         .sobre {
@@ -126,6 +129,42 @@
             display: flex; 
             align-items: center; 
             gap: 5px; 
+        }
+        #resultadoIMC {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 10px; /* Bordas arredondadas */
+            text-align: center;
+            width: fit-content;
+            margin: 10px auto; /* Centraliza horizontalmente */
+            
+        }
+
+        /* Estilos para cada classificação */
+        .abaixo-do-peso {
+            background-color: #fff3cd; /* Amarelo claro */
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+
+        .peso-normal {
+            background-color: #d4edda; /* Verde claro */
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .sobrepeso {
+            background-color: #fff3cd; /* Amarelo claro */
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+
+        .obesidade {
+            background-color: #f8d7da; /* Vermelho claro */
+            border: 2px solid #dc3545;
+            color: #721c24;
         }
     </style>
 </head>
@@ -171,7 +210,7 @@
             </div>
 
             <button onclick="adicionarAgua(250)">+ 250ml</button>
-            <button onclick="adicionarAgua(500)">+ 500ml</button>
+            <button onclick="adicionarAgua(400)">+ 400ml</button>
 
             <input type="number" id="agua-custom" placeholder="Digite um valor (ml)">
             <button onclick="adicionarAguaCustom()">Adicionar</button>
@@ -224,15 +263,25 @@
         function calcularIMC() {
             var peso = parseFloat(document.getElementById("peso").value);
             var altura = parseFloat(document.getElementById("altura").value);
+            var resultadoDiv = document.getElementById("resultadoIMC");
 
             if (!peso || !altura || altura <= 0) {
-                document.getElementById("resultadoIMC").innerText = "Insira valores válidos.";
+                resultadoDiv.innerText = "Insira valores válidos.";
+                resultadoDiv.className = ""; // Remove qualquer classe anterior
                 return;
             }
 
             var imc = peso / (altura * altura);
             var classificacao = imc < 18.5 ? "Abaixo do peso" : imc < 24.9 ? "Peso normal" : imc < 29.9 ? "Sobrepeso" : "Obesidade";
-            document.getElementById("resultadoIMC").innerText = `IMC: ${imc.toFixed(2)} - ${classificacao}`;
+
+            resultadoDiv.innerText = `IMC: ${imc.toFixed(2)} - ${classificacao}`;
+            
+            // Remove classes anteriores e adiciona a nova classe correspondente
+            resultadoDiv.className = "";  
+            if (classificacao === "Abaixo do peso") resultadoDiv.classList.add("abaixo-do-peso");
+            else if (classificacao === "Peso normal") resultadoDiv.classList.add("peso-normal");
+            else if (classificacao === "Sobrepeso") resultadoDiv.classList.add("sobrepeso");
+            else if (classificacao === "Obesidade") resultadoDiv.classList.add("obesidade");
         }
 
         // Contador de Água
