@@ -189,7 +189,7 @@ h2::after {
             gap: 5px; 
         }
         #resultadoIMC {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             padding: 10px;
             margin-top: 10px;
@@ -202,27 +202,16 @@ h2::after {
 
         /* Estilos para cada classificação */
         .abaixo-do-peso {
-            
-            border-bottom: 3px solid #ffc107;
-            
+            border-bottom: 3px solid #dc3545; 
         }
-
         .peso-normal {
-            
-            border-bottom: 3px solid #28a745;
-            
+            border-bottom: 3px solid #28a745;            
         }
-
         .sobrepeso {
-            
             border-bottom: 3px solid #ffc107;
-            color: #856404;
         }
-
-        .obesidade {
-            
+        .obesidade {   
             border-bottom: 3px solid #dc3545;
-            
         }
         .info-icon {
         display: inline-block;
@@ -515,7 +504,11 @@ document.addEventListener("DOMContentLoaded", exibirFraseAleatoria);
         var imc = peso / (altura * altura);
         var classificacao = imc < 18.5 ? "Abaixo do peso" : imc < 24.9 ? "Peso normal" : imc < 29.9 ? "Sobrepeso" : "Obesidade";
 
-        resultadoDiv.innerHTML = `IMC: ${imc.toFixed(2)} - ${classificacao} ${getInfoIcon(classificacao)}`;
+        resultadoDiv.innerHTML = `
+    <div>IMC: ${imc.toFixed(2)}</div>
+    <div>${classificacao} ${getInfoIcon(classificacao)}</div>
+`;
+
         
         // Remove classes anteriores e adiciona a nova classe correspondente
         resultadoDiv.className = "";  
