@@ -88,31 +88,57 @@
             padding: 10px;
             margin: 5px 0;
         }
+        .button-container {
+        display: flex;
+        gap: 10px; /* Espaçamento entre os botões */
+    }
         button {
             background-color: #f8a025;
             color: rgb(0, 0, 0);
             border: none;
             cursor: pointer;
             font-weight: bold;
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+            transition: background-color 0.3s, color 0.3s; /* Transição suave */
         }
         button:hover {
-            background-color: #f8a025;
+            background-color: #e6951f;
+        color: white; /* Cor do texto ao passar o mouse */
         }
         .progress-container {
-            width: 100%;
-            background-color: #ddd;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-top: 10px;
-            margin-bottom: 10px;
-
-        }
-        .progress-bar {
-            height: 40px;
-            background-color: #f8a025;
-            width: 0%;
-           
-        }
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative; /* Adicionado para posicionamento absoluto do texto */
+    text-align: center; /* Centraliza o texto horizontalmente */
+}
+.progress-bar {
+    height: 40px;
+    background-color: #f8a025;
+    width: 0%;
+    position: absolute; /* Adicionado para posicionamento do texto */
+    top: 0;
+    left: 0;
+}
+#progress-text {
+    position: relative;
+    z-index: 1;
+    color: #000000;
+    font-weight: bold;
+    line-height: 40px; /* Alinha verticalmente o texto */
+}
+.progress-bar span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-weight: bold;
+}
         footer {
             width: 100%;
             background: rgb(0, 0, 0);
@@ -173,6 +199,34 @@
             border: 2px solid #dc3545;
             color: #721c24;
         }
+        .info-icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: #f8a025;
+        color: white;
+        text-align: center;
+        line-height: 20px;
+        font-size: 12px;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+    .info-text {
+        display: none;
+        background-color: #000000;
+        color: #6d6d6d;
+        padding: 10px;
+        border-radius: 5px;
+        position: absolute;
+        z-index: 1;
+        width: 200px;
+        font-size: 12px;
+    }
+    .info-container {
+        position: relative;
+        display: inline-block;
+    }
     </style>
 </head>
 <body>
@@ -181,9 +235,7 @@
         <img src="logo.png" alt="Logo">
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <nav id="menu">
-            <a href="#">Início</a>
-            <a href="#">Sobre</a>
-            <a href="#">Contato</a>
+            <a href="#">Login</a>
         </nav>
     </header>
 
@@ -196,33 +248,34 @@
         </div>
 
         <!-- Calculadora de IMC -->
-        <div class="box">
-            <h2>Calculadora de IMC</h2>
-            <input type="number" id="peso" placeholder="Peso (kg)">
-            <input type="number" id="altura" step="0.01" placeholder="Altura (m)">
-            <button onclick="calcularIMC()">Calcular</button>
-            <p id="resultadoIMC"></p>
-        </div>
+<div class="box">
+    <h2>Calculadora de IMC</h2>
+    <input type="number" id="peso" placeholder="Peso (kg)">
+    <input type="number" id="altura" placeholder="Altura (cm)">
+    <button onclick="calcularIMC()">Calcular</button>
+    <p id="resultadoIMC"></p>
+</div>
 
         <!-- Contador de Água -->
         <div class="box">
             <h2>Contador de Água</h2>
-            <label>Meta diária (ml):</label>
+            <h4><label>Meta diária (ml):</label></h4>
             <input type="number" id="meta-agua" value="2000" min="100" onchange="atualizarProgresso()">
             
-            <p>Consumido: <span id="agua-total">0</span> ml</p>
+            <p style="display: none;">Consumido: <span id="agua-total">zero</span> ml</p>
             
             <div class="progress-container">
                 <div class="progress-bar" id="progress-bar"></div>
+                <span id="progress-text">Consumido: <span id="agua-total">ZERO</span> ml</span>
             </div>
-
+            <div class="button-container">
             <button onclick="adicionarAgua(250)">+ 250ml</button>
             <button onclick="adicionarAgua(400)">+ 400ml</button>
-
+</div>
             <input type="number" id="agua-custom" placeholder="Digite um valor (ml)">
+            <div class="button-container">
             <button onclick="adicionarAguaCustom()">Adicionar</button>
-
-            <button onclick="resetarAgua()">Resetar</button>
+            <button onclick="resetarAgua()">Resetar</button></div>
         </div>
 
     </div>
@@ -230,18 +283,13 @@
     <!-- Rodapé -->
     <footer>
         <div class="sobre">
-        <h3>Sobre Nós</h3>
-        <p>Somos um portal dedicado ao bem-estar e saúde, ajudando você a viver melhor.</p>
-        </div>
+        <h3>Redes Sociais</h3>
         <div class="social-icons">
             <a href="#">
                 <img src="whatsapp.png" alt="Whatsapp" width="20" height="20"> Whatsapp
             </a>
             <a href="#">
                 <img src="instagram.png" alt="Instagram" width="20" height="20"> Instagram
-            </a>
-            <a href="#">
-                <img src="youtube.png" alt="YouTube" width="20" height="20"> YouTube
             </a>
             
         </div>
@@ -268,36 +316,58 @@
 
         // IMC
         function calcularIMC() {
-            var peso = parseFloat(document.getElementById("peso").value);
-            var altura = parseFloat(document.getElementById("altura").value);
-            var resultadoDiv = document.getElementById("resultadoIMC");
+        var peso = parseFloat(document.getElementById("peso").value);
+        var alturaCm = parseFloat(document.getElementById("altura").value);
+        var resultadoDiv = document.getElementById("resultadoIMC");
 
-            if (!peso || !altura || altura <= 0) {
-                resultadoDiv.innerText = "Insira valores válidos.";
-                resultadoDiv.className = ""; // Remove qualquer classe anterior
-                return;
-            }
-
-            var imc = peso / (altura * altura);
-            var classificacao = imc < 18.5 ? "Abaixo do peso" : imc < 24.9 ? "Peso normal" : imc < 29.9 ? "Sobrepeso" : "Obesidade";
-
-            resultadoDiv.innerText = `IMC: ${imc.toFixed(2)} - ${classificacao}`;
-            
-            // Remove classes anteriores e adiciona a nova classe correspondente
-            resultadoDiv.className = "";  
-            if (classificacao === "Abaixo do peso") resultadoDiv.classList.add("abaixo-do-peso");
-            else if (classificacao === "Peso normal") resultadoDiv.classList.add("peso-normal");
-            else if (classificacao === "Sobrepeso") resultadoDiv.classList.add("sobrepeso");
-            else if (classificacao === "Obesidade") resultadoDiv.classList.add("obesidade");
+        if (!peso || !alturaCm || alturaCm <= 0) {
+            resultadoDiv.innerText = "Insira valores válidos.";
+            resultadoDiv.className = ""; // Remove qualquer classe anterior
+            return;
         }
 
+        var altura = alturaCm / 100; // Converte centímetros para metros
+        var imc = peso / (altura * altura);
+        var classificacao = imc < 18.5 ? "Abaixo do peso" : imc < 24.9 ? "Peso normal" : imc < 29.9 ? "Sobrepeso" : "Obesidade";
+
+        resultadoDiv.innerHTML = `IMC: ${imc.toFixed(2)} - ${classificacao} ${getInfoIcon(classificacao)}`;
+        
+        // Remove classes anteriores e adiciona a nova classe correspondente
+        resultadoDiv.className = "";  
+        if (classificacao === "Abaixo do peso") resultadoDiv.classList.add("abaixo-do-peso");
+        else if (classificacao === "Peso normal") resultadoDiv.classList.add("peso-normal");
+        else if (classificacao === "Sobrepeso") resultadoDiv.classList.add("sobrepeso");
+        else if (classificacao === "Obesidade") resultadoDiv.classList.add("obesidade");
+    }
+
+    function getInfoIcon(classificacao) {
+        const infoTexts = {
+            "Abaixo do peso": "Estar abaixo do peso pode levar a deficiências nutricionais e problemas de saúde.",
+            "Peso normal": "Estar com o peso normal reduz o risco de várias doenças e promove o bem-estar geral.",
+            "Sobrepeso": "Estar com sobrepeso pode aumentar o risco de doenças cardíacas, diabetes e outras condições.",
+            "Obesidade": "A obesidade está associada a um maior risco de doenças graves, incluindo diabetes tipo 2 e doenças cardíacas."
+        };
+        return `
+            <div class="info-container">
+                <div class="info-icon" onclick="toggleInfoText(event)">?</div>
+                <div class="info-text">${infoTexts[classificacao]}</div>
+            </div>
+        `;
+    }
+
+    function toggleInfoText(event) {
+        const infoText = event.target.nextElementSibling;
+        infoText.style.display = infoText.style.display === "block" ? "none" : "block";
+    }
         // Contador de Água
         let totalAgua = 0;
         function atualizarProgresso() {
-            let meta = parseInt(document.getElementById("meta-agua").value);
-            let progresso = (totalAgua / meta) * 100;
-            document.getElementById("progress-bar").style.width = `${Math.min(progresso, 100)}%`;
-        }
+        let meta = parseInt(document.getElementById("meta-agua").value);
+        let progresso = (totalAgua / meta) * 100;
+        document.getElementById("progress-bar").style.width = `${Math.min(progresso, 100)}%`;
+        document.getElementById("agua-total").innerText = totalAgua;
+        document.getElementById("progress-text").innerText = `Consumido: ${totalAgua} ml`;
+    }
         function adicionarAgua(qtd) { totalAgua += qtd; document.getElementById("agua-total").innerText = totalAgua; atualizarProgresso(); }
         function adicionarAguaCustom() { let qtd = parseInt(document.getElementById("agua-custom").value); if (qtd > 0) adicionarAgua(qtd); }
         function resetarAgua() { totalAgua = 0; document.getElementById("agua-total").innerText = 0; atualizarProgresso(); }
