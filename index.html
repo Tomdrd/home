@@ -182,14 +182,14 @@ h2::after {
         }
         .social-icons a {
             text-decoration: none;
-            font-size: 16px;
+            font-size: 14px;
             color: white;
             display: flex; 
             align-items: center; 
             gap: 5px; 
         }
         #resultadoIMC {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: bold;
             padding: 10px;
             margin-top: 10px;
@@ -202,34 +202,34 @@ h2::after {
 
         /* Estilos para cada classificação */
         .abaixo-do-peso {
-            background-color: #fff3cd; /* Amarelo claro */
-            border: 2px solid #ffc107;
-            color: #856404;
+            
+            border-bottom: 3px solid #ffc107;
+            
         }
 
         .peso-normal {
-            background-color: #d4edda; /* Verde claro */
-            border: 2px solid #28a745;
-            color: #155724;
+            
+            border-bottom: 3px solid #28a745;
+            
         }
 
         .sobrepeso {
-            background-color: #fff3cd; /* Amarelo claro */
-            border: 2px solid #ffc107;
+            
+            border-bottom: 3px solid #ffc107;
             color: #856404;
         }
 
         .obesidade {
-            background-color: #f8d7da; /* Vermelho claro */
-            border: 2px solid #dc3545;
-            color: #721c24;
+            
+            border-bottom: 3px solid #dc3545;
+            
         }
         .info-icon {
         display: inline-block;
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        background-color: #f8a025;
+        background-color: #808080;
         color: white;
         text-align: center;
         line-height: 20px;
@@ -250,7 +250,7 @@ h2::after {
         text-align: left;
     }
     .info-container {
-        position: relative;
+        position: absolute;
         display: inline-block;
     }
     .meta-container {
@@ -267,7 +267,7 @@ h2::after {
 input {
   width: 90%;
   padding: 10px;
-  border: 2px solid #f8a025;
+  border: 1px solid #f8a025;
   border-radius: 5px;
   font-size: 16px;
   transition: all 0.3s ease-in-out;
@@ -346,7 +346,7 @@ input::placeholder {
             <div class="button-container">
                 <button onclick="adicionarAgua(250)">+ 250ml</button>
                 <button onclick="adicionarAgua(400)">+ 400ml</button>
-                <input type="number" id="agua-custom" placeholder="Digite um valor (ml)">
+                <input type="number" id="agua-custom" placeholder="Valor (ml)">
             </div>
             
             <div class="button-container">
