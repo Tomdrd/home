@@ -38,8 +38,8 @@
             color: white;
             position: relative;
         }
+        
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-
 h2 {
     font-size: 18px; /* Menor que antes para um visual mais equilibrado */
     font-weight: 600; /* Peso médio para melhor contraste */
@@ -104,7 +104,7 @@ h2::after {
 
             margin: 20px 0;
             padding: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #e6e3e333;
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -264,6 +264,24 @@ h2::after {
 .meta-container input {
     flex: 1;
 }
+input {
+  width: 90%;
+  padding: 10px;
+  border: 2px solid #f8a025;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #ff7b00;
+  outline: none;
+}
+
+input::placeholder {
+  color: #999;
+  font-style: italic;
+}
     </style>
 </head>
 <body>
@@ -328,8 +346,9 @@ h2::after {
             <div class="button-container">
                 <button onclick="adicionarAgua(250)">+ 250ml</button>
                 <button onclick="adicionarAgua(400)">+ 400ml</button>
+                <input type="number" id="agua-custom" placeholder="Digite um valor (ml)">
             </div>
-            <input type="number" id="agua-custom" placeholder="Digite um valor (ml)">
+            
             <div class="button-container">
                 <button onclick="adicionarAguaCustom()">Adicionar</button>
                 <button onclick="resetarAgua()">Resetar</button>
