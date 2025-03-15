@@ -271,6 +271,22 @@ input::placeholder {
   color: #999;
   font-style: italic;
 }
+.report-error {
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.report-error a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #c5c5c5;
+    text-decoration: none;
+}
+
+.report-error a:hover {
+    color: #8a8a8a;
+}
     </style>
 </head>
 <body>
@@ -344,9 +360,9 @@ input::placeholder {
             </div>
         </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <div class="sobre">
+   <!-- Rodapé -->
+   <footer>
+    <div class="sobre">
         <h3>Redes Sociais</h3>
         <div class="social-icons">
             <a href="#">
@@ -355,9 +371,12 @@ input::placeholder {
             <a href="#">
                 <img src="instagram.png" alt="Instagram" width="20" height="20"> Instagram
             </a>
-            
         </div>
-    </footer>
+        <div class="report-error">
+            <a href="mailto:antonyeltonrodrigues@gmail.com">Reportar erro nesta página</a> <!-- Link para enviar email -->
+        </div>
+    </div>
+</footer>
 
     <script>
         function toggleMenu() {
