@@ -201,28 +201,27 @@ h2::after {
         }
         #resultadoIMC {
             font-size: 16px;
-            font-weight: bold;
+            font-weight: normal;
             padding: 10px;
             margin-top: 10px;
             border-radius: 0; /* Bordas arredondadas */
             text-align: center;
-            width: fit-content;
+            width: 150px;
             margin: 10px auto; /* Centraliza horizontalmente */
-            
         }
 
         /* Estilos para cada classificação */
         .abaixo-do-peso {
-            border-bottom: 4px solid #dc3545; 
+            border-bottom: 3px solid #dc3545; 
         }
         .peso-normal {
-            border-bottom: 4px solid #28a745;            
+            border-bottom: 3px solid #28a745;         
         }
         .sobrepeso {
-            border-bottom: 4px solid #ffc107;
+            border-bottom: 3px solid #ffc107;
         }
         .obesidade {   
-            border-bottom: 4px solid #dc3545;
+            border-bottom: 3px solid #dc3545;
         }
         .info-icon {
         display: block;
@@ -236,6 +235,8 @@ h2::after {
         font-size: 12px;
         cursor: pointer;
         margin-left: 5px;
+        margin-top: 3px;
+        margin-right: 3px;
     }
     .info-text {
         display: none;
@@ -307,11 +308,14 @@ input::placeholder {
 .share-buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-bottom: 20px;
+    width:  auto;
 }
 
 .share-button {
+    justify-content: center;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -322,12 +326,6 @@ input::placeholder {
     font-size: 14px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
-}
-.share-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
 }
 
 .share-button {
@@ -389,6 +387,15 @@ input::placeholder {
     height: 2px;
     background-color: #141414;
     margin-top: 20px;
+}
+.imc {
+    width: 150px;
+    border: 1px solid #e6e3e333;
+    margin-bottom: 10px;
+}
+.classificacao {
+    border: 1px solid #e6e3e333;
+    width: 150px;
 }
     </style>
 </head>
@@ -510,6 +517,7 @@ input::placeholder {
                 }
             </script></div><!-- FIM Beba agua-->
         <div class="share-buttons">
+           
             <button class="share-button whatsapp" onclick="shareWhatsApp()">
                 <img src="whatsapp.png" alt="WhatsApp" width="20" height="20"> Compartilhar
             </button>
@@ -518,7 +526,7 @@ input::placeholder {
             </button>
             <button class="share-button email" onclick="shareEmail()">
                 <img src="email.png" alt="Email" width="20" height="20"> Compartilhar
-            </button>
+            </button>       
     </div>
    <!-- Rodapé -->
    <footer>
@@ -687,8 +695,8 @@ document.addEventListener("DOMContentLoaded", exibirFraseAleatoria);
         var classificacao = imc < 18.5 ? "Abaixo do peso" : imc < 24.9 ? "Peso normal" : imc < 29.9 ? "Sobrepeso" : "Obesidade";
 
         resultadoDiv.innerHTML = `
-    <div>IMC: ${imc.toFixed(2)}</div>
-    <div>${classificacao} ${getInfoIcon(classificacao)}</div>
+    <div class="imc">IMC: ${imc.toFixed(2)}</div>
+    <div class="classificacao">${classificacao} ${getInfoIcon(classificacao)}</div>
 `;
 
         
