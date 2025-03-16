@@ -287,6 +287,86 @@ input::placeholder {
 .report-error a:hover {
     color: #8a8a8a;
 }
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.share-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.share-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+.share-button {
+    align-items: center;
+}
+.share-button img {
+    vertical-align: middle;
+}
+
+.share-button.whatsapp {  
+    border: 1px solid #29a71a; /* Cor da logo do WhatsApp */
+    border-radius: 20px;
+    background: none;
+    color: #29a71a;
+}
+
+.share-button.whatsapp:hover {
+    background-color: #29a71a;
+    color: white;
+}
+
+.share-button.facebook {
+    border: 1px solid #1877F2; /* Cor da logo do Facebook */
+    color: #1877F2;
+    border-radius: 20px;
+    background: none;
+}
+
+.share-button.facebook:hover {
+    background-color: #1877F2;
+    color: white;
+}
+
+.share-button.email {
+    border: 1px solid #ff2147; /* Cor cinza */
+    color: #ff2147;
+    border-radius: 20px;
+    background: none;
+}
+
+.share-button.email:hover {
+    background-color: #ff2147;
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -359,7 +439,17 @@ input::placeholder {
                 <button onclick="resetarAgua()">Resetar</button>
             </div>
         </div>
-
+        <div class="share-buttons">
+            <button class="share-button whatsapp" onclick="shareWhatsApp()">
+                <img src="whatsapp.png" alt="WhatsApp" width="20" height="20"> Compartilhar
+            </button>
+            <button class="share-button facebook" onclick="shareFacebook()">
+                <img src="facebook.png" alt="Facebook" width="20" height="20"> Compartilhar
+            </button>
+            <button class="share-button email" onclick="shareEmail()">
+                <img src="email.png" alt="Email" width="20" height="20"> Compartilhar
+            </button>
+        </div>
    <!-- Rodapé -->
    <footer>
     <div class="sobre">
@@ -373,7 +463,7 @@ input::placeholder {
             </a>
         </div>
         <div class="report-error">
-            <a href="mailto:antonyeltonrodrigues@gmail.com">Reportar erro nesta página</a> <!-- Link para enviar email -->
+            <a href="mailto:antonyeltonrodrigues@gmail.com">Reportar erro nesta </a> <!-- Link para enviar email -->
         </div>
     </div>
 </footer>
@@ -571,6 +661,23 @@ document.addEventListener("DOMContentLoaded", exibirFraseAleatoria);
 
         window.onload = exibirFraseAleatoria;
     </script>
+<script>
+    function shareWhatsApp() {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent("Confira este site incrível!");
+        window.open(`https://api.whatsapp.com/send?text=${text} ${url}`, '_blank');
+    }
 
+    function shareFacebook() {
+        const url = encodeURIComponent(window.location.href);
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+    }
+
+    function shareEmail() {
+        const subject = encodeURIComponent("Confira este site incrível!");
+        const body = encodeURIComponent(`Dê uma olhada neste site: ${window.location.href}`);
+        window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+    }
+</script>
 </body>
 </html>
