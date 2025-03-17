@@ -13,32 +13,33 @@
     <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
     <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@400;700&display=swap" rel="stylesheet">
     <title>Estética e Saúde Academia</title>
     <style>
-        :root {
-            color-scheme: light dark;
+    :root {
+        color-scheme: light dark;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        width: 100vw;
         }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            width: 100vw;
-        }
-        header {
-            width: 100%;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-header, #f8a025);
-            color: white;
-            position: relative;
-        }
-        p {
+header {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-header, #f8a025);
+    color: white;
+    position: relative;        
+}
+p {
     font-size: 14px; /* Tamanho da fonte */
     color: #868686; /* Cor do texto */
     line-height: 1.6; /* Altura da linha para melhor legibilidade */
@@ -49,14 +50,16 @@
 }
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
 h2 {
-    font-size: 18px; /* Menor que antes para um visual mais equilibrado */
+    font-size: 16px; /* Menor que antes para um visual mais equilibrado */
     font-weight: 600; /* Peso médio para melhor contraste */
     color: #868686; /* Cinza escuro, legível em qualquer fundo */
     margin-bottom: 10px;
     text-align: center;
     position: relative;
     padding-bottom: 6px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Big Shoulders', sans-serif;
+    letter-spacing: 2px; /* Aumenta o espaçamento entre as letras */
+    text-transform: uppercase;
 }
 
 h2::after {
@@ -71,75 +74,74 @@ h2::after {
     border-radius: 2px;
     opacity: 0.9;
 }
-        header img {
-            height: 40px;
-            margin-left: 10px;
-        }
-        nav {
-            display: none;
-            position: absolute;
-            top: 60px;
-            right: 10px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
-        nav a {
-            display: block;
-            padding: 10px;
-            color: black;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background: #ddd;
-        }
-        .menu-icon {
-            margin-right: 30px;
-            font-size: 30px;
-            cursor: pointer;
-            color: black;
-        }
-        #menu {
-            margin-right: 20px;
-        }
-        .container {
-            width: 90%;
-            max-width: 600px;
-            text-align: center;
-            padding: 20px;
-        }
-        .box {
-
-            margin: 20px 0;
-            padding: 15px;
-            border: 1px solid #e6e3e333;
-            border-radius: 10px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        input, button {
-            width: 90%;
-            padding: 10px;
-            margin: 5px 0;
-        }
-        .button-container {
-        display: flex;
-        gap: 10px; /* Espaçamento entre os botões */
-    }
-        button {
-            background-color: #f8a025;
-            color: rgb(0, 0, 0);
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 10px; /* Bordas arredondadas */
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
-            transition: background-color 0.3s, color 0.3s; /* Transição suave */
-        }
-        button:hover {
-            background-color: #e6951f;
-        color: white; /* Cor do texto ao passar o mouse */
-        }
-        .progress-container {
+header img {
+    height: 40px;
+    margin-left: 10px;
+}
+nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+nav a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+nav a:hover {
+    background: #ddd;
+}
+.menu-icon {
+    margin-right: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    color: black;
+}
+#menu {
+    margin-right: 20px;
+}
+.container {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+}
+.box {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #e6e3e333;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+input, button {
+    width: 90%;
+    padding: 10px;
+    margin: 5px 0;
+}
+.button-container {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+}
+button {
+    background-color: #f8a025;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: background-color 0.3s, color 0.3s; /* Transição suave */
+}
+button:hover {
+    background-color: #e6951f;
+    color: white; /* Cor do texto ao passar o mouse */
+}
+.progress-container {
     width: 100%;
     background-color: #ddd;
     border-radius: 20px;
@@ -172,91 +174,88 @@ h2::after {
     color: white;
     font-weight: bold;
 }
-        footer {
-            width: 100%;
-            background: rgb(0, 0, 0);
-            color: white;
-            text-align: center;
-            padding: 50px 0 ;
-        }
-        .sobre {
-            padding: 15px;
-        }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .social-icons a {
-            text-decoration: none;
-            font-size: 14px;
-            color: white;
-            display: flex; 
-            align-items: center; 
-            gap: 5px; 
-        }
-        .social-icons a:hover {
-            color: #8a8a8a;
-        }
-        #resultadoIMC {
-            font-size: 16px;
-            font-weight: normal;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 0; /* Bordas arredondadas */
-            text-align: center;
-            width: 150px;
-            margin: 10px auto; /* Centraliza horizontalmente */
-        }
-
-        /* Estilos para cada classificação */
-        .abaixo-do-peso {
-            border-bottom: 3px solid #dc3545; 
-        }
-        .peso-normal {
-            border-bottom: 3px solid #28a745;         
-        }
-        .sobrepeso {
-            border-bottom: 3px solid #ffc107;
-        }
-        .obesidade {   
-            border-bottom: 3px solid #dc3545;
-        }
-        .info-icon {
-        display: block;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: #494949;
-        color: white;
-        text-align: center;
-        line-height: 20px;
-        font-size: 12px;
-        cursor: pointer;
-        margin-left: 5px;
-        margin-top: 3px;
-        margin-right: 3px;
-    }
-    .info-text {
-        display: none;
-        background-color: #000000;
-        color: #6d6d6d;
-        padding: 10px;
-        border-radius: 5px;
-        position: absolute;
-        z-index: 3;
-        width: 20%;
-        font-size: 14px;
-        text-align: left;
-        font-style: italic;
-        width: 80%;
-    }
-    .info-container {
-        position: absolute;
-        display: inline-block;
-        width: 200px;
-    }
+footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.158);
+    color: white;
+    text-align: center;
+}
+.sobre {
+padding: 15px;
+}
+ .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.social-icons a {
+    text-decoration: none;
+    font-size: 14px;
+    color: white;
+    display: flex; 
+     align-items: center; 
+    gap: 5px; 
+}
+.social-icons a:hover {
+    color: #8a8a8a;
+}
+#resultadoIMC {
+    font-size: 16px;
+    font-weight: normal;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 0; /* Bordas arredondadas */
+    text-align: center;
+    width: 150px;
+    margin: 10px auto; /* Centraliza horizontalmente */
+}
+.abaixo-do-peso {
+    border-bottom: 3px solid #dc3545; 
+}
+.peso-normal {
+    border-bottom: 3px solid #28a745;         
+}
+.sobrepeso {
+    border-bottom: 3px solid #ffc107;
+}
+.obesidade {   
+    border-bottom: 3px solid #dc3545;
+}
+.info-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #494949;
+    color: white;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-top: 3px;
+    margin-right: 3px;
+}
+.info-text {
+    display: none;
+    background-color: #000000;
+    color: #6d6d6d;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 3;
+    width: 20%;
+    font-size: 14px;
+    text-align: left;
+    font-style: italic;
+    width: 80%;
+}
+.info-container {
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+}
     .meta-container {
     display: flex;
     align-items: center;
@@ -264,27 +263,28 @@ h2::after {
 }
 .meta-container label {
     margin: 0;
+    color: #999;
 }
 .meta-container input {
     flex: 1;
 }
 input {
-  width: 90%;
-  padding: 10px;
-  border: 1px solid #f8a025;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: all 0.3s ease-in-out;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #f8a025;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
 }
 
 input:focus {
-  border-color: #ff7b00;
-  outline: none;
+    border-color: #ff7b00;
+    outline: none;
 }
 
 input::placeholder {
-  color: #999;
-  font-style: italic;
+    color: #999;
+    font-style: italic;
 }
 .report-error {
     font-size: 12px;
@@ -305,16 +305,17 @@ input::placeholder {
 .report-error img {
     vertical-align: middle;
 }
+/* compartilhar */
 .share-buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-bottom: 20px;
-    width:  auto;
+    margin-bottom: 20px;  
 }
 
 .share-button {
+    width: 140px;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -360,7 +361,7 @@ input::placeholder {
 }
 
 .share-button.facebook {
-    display: none;
+    
     border: 1px solid #1877F2; /* Cor da logo do Facebook */
     color: #1877F2;
     border-radius: 20px;
