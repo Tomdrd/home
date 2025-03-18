@@ -207,7 +207,7 @@ padding: 15px;
     margin-top: 10px;
     border-radius: 0; /* Bordas arredondadas */
     text-align: center;
-    width: 150px;
+    width: 180px;
     margin: 10px auto; /* Centraliza horizontalmente */
 }
 .abaixo-do-peso {
@@ -222,13 +222,12 @@ padding: 15px;
 .obesidade {   
     border-bottom: 3px solid #dc3545;
 }
-.info-icon {
-    display: block;
+.info-icon {    
     width: 20px;
     height: 20px;
     border-radius: 50%;
     background-color: #494949;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     line-height: 20px;
     font-size: 12px;
@@ -243,20 +242,21 @@ padding: 15px;
     color: #6d6d6d;
     padding: 10px;
     border-radius: 5px;
-    position: absolute;
+    position: relative;
+    top: 25px;
+    right: 130px;
     z-index: 3;
-    width: 20%;
+    width: 150px;
     font-size: 14px;
     text-align: left;
     font-style: italic;
-    width: 80%;
 }
 .info-container {
     position: absolute;
     display: inline-block;
     width: 200px;
 }
-    .meta-container {
+.meta-container {
     display: flex;
     align-items: center;
     gap: 10px; /* Espaçamento entre o rótulo e o campo de entrada */
@@ -313,35 +313,16 @@ input::placeholder {
     gap: 10px;
     margin-bottom: 20px;  
 }
-
-.share-button {
-    justify-content: center;
-    display: flex;
+.share-button {  
     align-items: center;
+    width: auto;
     gap: 5px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    background-color: white;
-    font-size: 12px;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.share-button {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     background-color: white;
     font-size: 14px;
     text-decoration: none;
     transition: background-color 0.3s, color 0.3s;
-}
-.share-button {
-    align-items: center;
 }
 .share-button img {
     vertical-align: middle;
@@ -382,19 +363,31 @@ input::placeholder {
     background-color: #ff2147;
     color: white;
 }
+.share-button.twitter {
+    border: 1px solid #ffffff; /* Cor da logo do Twitter */
+    color: #ffffff;
+    border-radius: 20px;
+    background: none;
+}
+
+.share-button.twitter:hover {
+    background-color: #000000;
+    border: 1px solid #000000; /* Cor da logo do Twitter */
+    color: white;
+}
 .linha {
     height: 2px;
     background-color: #141414;
     margin-top: 20px;
 }
 .imc {
-    width: 150px;
+    width: 180px;
     border: 1px solid #e6e3e333;
     margin-bottom: 10px;
 }
 .classificacao {
     border: 1px solid #e6e3e333;
-    width: 150px;
+    width: 180px;
 }
     </style>
 </head>
@@ -515,18 +508,21 @@ input::placeholder {
                     });
                 }
             </script></div><!-- FIM Beba agua-->
-        <div class="share-buttons">
-           
-            <button class="share-button whatsapp" onclick="shareWhatsApp()">
-                <img src="whatsapp.png" alt="WhatsApp" width="20" height="20"> Compartilhar
-            </button>
-            <button class="share-button facebook" onclick="shareFacebook()">
-                <img src="facebook.png" alt="Facebook" width="20" height="20"> Compartilhar
-            </button>
-            <button class="share-button email" onclick="shareEmail()">
-                <img src="email.png" alt="Email" width="20" height="20"> Compartilhar
-            </button>       
-    </div>
+<div class="share-buttons">
+    <p>Compartilhe:</p>
+    <button class="share-button whatsapp" onclick="shareWhatsApp()">
+        <img src="whatsapp.png" alt="WhatsApp" width="20" height="20">
+    </button>
+    <button class="share-button facebook" onclick="shareFacebook()">
+        <img src="facebook.png" alt="Facebook" width="20" height="20">
+    </button>
+    <button class="share-button email" onclick="shareEmail()">
+        <img src="email.png" alt="Email" width="20" height="20"> 
+    </button>
+    <button class="share-button twitter" onclick="shareTwitter()">
+        <img src="twitter.png" alt="Twitter" width="20" height="20">
+    </button>
+</div>
    <!-- Rodapé -->
    <footer>
     <div class="sobre">
@@ -757,6 +753,12 @@ document.addEventListener("DOMContentLoaded", exibirFraseAleatoria);
         const subject = encodeURIComponent("Confira este site incrível!");
         const body = encodeURIComponent(`Dê uma olhada neste site: ${window.location.href}`);
         window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+    }
+
+    function shareTwitter() {
+        const url = encodeURIComponent(window.location.href);
+        const text = encodeURIComponent("Confira este site incrível!");
+        window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
     }
 </script>
 </body>
